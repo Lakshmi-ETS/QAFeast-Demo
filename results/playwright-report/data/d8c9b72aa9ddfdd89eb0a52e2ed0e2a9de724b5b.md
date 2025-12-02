@@ -1,0 +1,78 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e5]:
+      - link "logo" [ref=e8] [cursor=pointer]:
+        - /url: https://www.qafeast.com/
+        - img "logo" [ref=e9]
+      - generic [ref=e10]:
+        - list [ref=e11]:
+          - listitem [ref=e12]:
+            - link "Tutorials" [ref=e13] [cursor=pointer]:
+              - /url: https://www.qafeast.com/
+          - listitem [ref=e14]:
+            - button "Tools" [ref=e16] [cursor=pointer]
+          - listitem [ref=e17]:
+            - link "Contact Us" [ref=e18] [cursor=pointer]:
+              - /url: https://www.qafeast.com/contact
+        - text: 
+  - generic [ref=e21]:
+    - list [ref=e24]:
+      - listitem [ref=e25]:
+        - generic [ref=e26] [cursor=pointer]: Textbox
+      - listitem [ref=e27]:
+        - generic [ref=e28] [cursor=pointer]: Button
+      - listitem [ref=e29]:
+        - generic [ref=e30] [cursor=pointer]: Radio Button
+      - listitem [ref=e31]:
+        - generic [ref=e32] [cursor=pointer]: Checkbox
+      - listitem [ref=e33]:
+        - generic [ref=e34] [cursor=pointer]: Label
+      - listitem [ref=e35]:
+        - generic [ref=e36] [cursor=pointer]: Hyperlink
+      - listitem [ref=e37]:
+        - generic [ref=e38] [cursor=pointer]: Dropdown
+      - listitem [ref=e39]:
+        - generic [ref=e40] [cursor=pointer]: Drag & Drop
+      - listitem [ref=e41]:
+        - generic [ref=e42] [cursor=pointer]: Context Menu
+      - listitem [ref=e43]:
+        - generic [ref=e44] [cursor=pointer]: Double Click
+      - listitem [ref=e45]:
+        - generic [ref=e46] [cursor=pointer]: Frames
+      - listitem [ref=e47]:
+        - generic [ref=e48] [cursor=pointer]: Windows
+      - listitem [ref=e49]:
+        - generic [ref=e50] [cursor=pointer]: Scrolling
+      - listitem [ref=e51]:
+        - generic [ref=e52] [cursor=pointer]: Webtable
+      - listitem [ref=e53]:
+        - generic [ref=e54] [cursor=pointer]: File Upload & Download event
+      - listitem [ref=e55]:
+        - generic [ref=e56] [cursor=pointer]: Chat Window
+      - listitem [ref=e57]:
+        - generic [ref=e58] [cursor=pointer]: Loading
+    - generic [ref=e60]:
+      - generic [ref=e61]:
+        - heading "Textbox" [level=2] [ref=e62]
+        - generic [ref=e63]:
+          - generic [ref=e64] [cursor=pointer]: "Editable Text box:"
+          - 'textbox "Editable Text box: Text box with some text:" [ref=e65]'
+        - generic [ref=e66]:
+          - generic [ref=e67] [cursor=pointer]: "Not Editable Text box:"
+          - textbox "Not Editable Text box:" [disabled] [ref=e68]
+        - generic [ref=e69]:
+          - generic [ref=e70] [cursor=pointer]: "Text box with some text:"
+          - textbox [ref=e71]: Enter username
+      - text: ↑  ↑  ↑  ↑  ↑ 
+  - contentinfo [ref=e72]:
+    - paragraph [ref=e76]:
+      - text: Copyright ©2024 Tutorial All Rights Reserved.
+      - link "Privacy Policy" [ref=e77] [cursor=pointer]:
+        - /url: https://www.qafeast.com/privacypolicy
+      - text: "&"
+      - link "Terms and Conditions" [ref=e78] [cursor=pointer]:
+        - /url: https://www.qafeast.com/Termsandconditions
+```
