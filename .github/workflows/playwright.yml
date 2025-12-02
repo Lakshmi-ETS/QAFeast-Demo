@@ -35,7 +35,3 @@ jobs:
       - name: Run All Playwright Tests
         run: |
           npx playwright test --reporter=html --output=results/full
-
-      # 7 Show report in CLI
-      - name: Open Playwright HTML Report
-        run: npx playwright show-report results/full
