@@ -43,6 +43,6 @@ test('TC01_TextBox',{tag:'@regression'},async({page})=>{
       await page.locator('textarea[name="msg"]').fill(dayjs().add(2,'day').format('YYYY-MM-DD HH:mm:ss'))
       await page.locator('textarea[name="msg"]').fill(dayjs().add(3,'day').format('YYYY-MM-DD HH:mm'))
       await page.getByRole('button',{name:'Send'}).click({delay:2000})
-      console.log(dayjs().add(2,'day').foramt('YYYY-MM-DD HH:mm:ss'))
+      console.log(dayjs().add(2,'day').format('YYYY-MM-DD HH:mm:ss'))
     })
 })
