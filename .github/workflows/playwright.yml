@@ -59,19 +59,25 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-browsers-${{ hashFiles('package-lock.json') }}
 
-      - name: Ensure output folder exists
-        run: mkdir -p results/sanity
-
       - name: Run Sanity Tests
-        run: npx playwright test --grep @sanity --reporter=html --output=results/sanity
+        run: |
+          npx playwright test --grep @sanity \
+          --reporter="html=results/sanity/html-report" \
+          --output=results/sanity/artifacts
 
       - name: Upload Sanity HTML Report
         uses: actions/upload-artifact@v4
         with:
-          name: sanity-playwright-report
-          path: results/sanity
+          name: sanity-playwright-html
+          path: results/sanity/html-report
           retention-days: 30
-          if-no-files-found: warn
+
+      - name: Upload Sanity Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: sanity-playwright-artifacts
+          path: results/sanity/artifacts
+          retention-days: 30
 
   # -------------------- Regression Tests --------------------
   regression-tests:
@@ -92,19 +98,25 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-browsers-${{ hashFiles('package-lock.json') }}
 
-      - name: Ensure output folder exists
-        run: mkdir -p results/regression
-
       - name: Run Regression Tests
-        run: npx playwright test --grep @regression --reporter=html --output=results/regression
+        run: |
+          npx playwright test --grep @regression \
+          --reporter="html=results/regression/html-report" \
+          --output=results/regression/artifacts
 
       - name: Upload Regression HTML Report
         uses: actions/upload-artifact@v4
         with:
-          name: regression-playwright-report
-          path: results/regression
+          name: regression-playwright-html
+          path: results/regression/html-report
           retention-days: 30
-          if-no-files-found: warn
+
+      - name: Upload Regression Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-playwright-artifacts
+          path: results/regression/artifacts
+          retention-days: 30
 
   # -------------------- Full Test Suite --------------------
   full-tests:
@@ -125,57 +137,22 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-browsers-${{ hashFiles('package-lock.json') }}
 
-      - name: Ensure output folder exists
-        run: mkdir -p results/full
-
       - name: Run Full Test Suite
-        run: npx playwright test --reporter=html --output=results/full
+        run: |
+          npx playwright test \
+          --reporter="html=results/full/html-report" \
+          --output=results/full/artifacts
 
       - name: Upload Full HTML Report
         uses: actions/upload-artifact@v4
         with:
-          name: full-playwright-report
-          path: results/full
+          name: full-playwright-html
+          path: results/full/html-report
           retention-days: 30
-          if-no-files-found: warn
 
-  # -------------------- Merged Report --------------------
-  merged-report:
-    runs-on: ubuntu-latest
-    needs: [sanity-tests, regression-tests, full-tests]
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Download Sanity Report
-        uses: actions/download-artifact@v4
-        with:
-          name: sanity-playwright-report
-          path: reports/sanity
-
-      - name: Download Regression Report
-        uses: actions/download-artifact@v4
-        with:
-          name: regression-playwright-report
-          path: reports/regression
-
-      - name: Download Full Report
-        uses: actions/download-artifact@v4
-        with:
-          name: full-playwright-report
-          path: reports/full
-
-      - name: Merge Playwright Test Results
-        run: |
-          mkdir -p merged-report
-          cp -r reports/sanity/* merged-report/
-          cp -r reports/regression/* merged-report/
-          cp -r reports/full/* merged-report/
-          npx playwright show-report merged-report
-
-      - name: Upload Merged HTML Report
+      - name: Upload Full Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: merged-playwright-report
-          path: merged-report
+          name: full-playwright-artifacts
+          path: results/full/artifacts
           retention-days: 30
-          if-no-files-found: warn
