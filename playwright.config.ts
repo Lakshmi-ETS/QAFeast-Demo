@@ -1,24 +1,21 @@
 import { defineConfig, devices } from '@playwright/test';
 
+/**
+ * See https://playwright.dev/docs/test-configuration.
+ */
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : 1,
-
-  // Reporter config: HTML report in each suite folder
-  reporter: [
-    ['html', { outputFolder: 'results/playwright-report', open: 'never' }]
-  ],
-
+  reporter: [['html', { open: 'never' }]],
   use: {
     headless: true,
-    trace: 'on-first-retry',           // Trace only on retry
-    screenshot: 'only-on-failure',     // Screenshot on failure
-    video: 'retain-on-failure',        // Video on failure
+    trace: 'retain-on-failure',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
-
   projects: [
     {
       name: 'Google Chrome',

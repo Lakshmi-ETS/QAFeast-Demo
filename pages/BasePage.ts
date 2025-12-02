@@ -25,7 +25,12 @@ export class BasePage
         }
         await expect(this.page.locator('.rghtside-inner:not([style*="display: none"]) h2.page-title')).toHaveText(header)
        await this.page.waitForLoadState('domcontentloaded');
-
     }
+    async getCurrentTimeSeconds()
+        {
+            const dayjs = require('dayjs');
+            const now =dayjs()
+            return await now.format('YYYY-MM-DD HH:mm:ss')
+        }
 
 }
