@@ -40,7 +40,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - name: Run Sanity Tests
-        run: npx playwright test --grep @sanity --headed --reporter=html --output=results/sanity
+        run: npx playwright test --grep @sanity --reporter=html --output=results/sanity
       - name: Upload Sanity HTML Report
         uses: actions/upload-artifact@v4
         with:
@@ -60,7 +60,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - name: Run Regression Tests
-        run: npx playwright test --grep @regression --headed --reporter=html --output=results/regression
+        run: npx playwright test --grep @regression --reporter=html --output=results/regression
       - name: Upload Regression HTML Report
         uses: actions/upload-artifact@v4
         with:
@@ -80,7 +80,7 @@ jobs:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - name: Run Full Test Suite
-        run: npx playwright test --headed --reporter=html --output=results/full
+        run: npx playwright test --reporter=html --output=results/full
       - name: Upload Full HTML Report
         uses: actions/upload-artifact@v4
         with:
